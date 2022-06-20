@@ -1,5 +1,6 @@
 package com.fssm.web.entities;
 
+import com.fssm.web.enums.Etat;
 import com.fssm.web.enums.TypeOperation;
 import lombok.*;
 
@@ -29,7 +30,7 @@ public class Operation {
     private double totalSomme;
     private TypeOperation typeOperation;
     private LocalDate dateTransact;
-    private String etat;
+    private Etat etat;
 
 
     @ManyToOne

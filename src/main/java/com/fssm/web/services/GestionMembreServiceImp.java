@@ -29,27 +29,38 @@ public class GestionMembreServiceImp implements GestionMembreService {
     }
 
     @Override
-    public List<Object[]> getAllmemebresLabo() {
+    public List<Membre> getAllmembres() {
         return null;
     }
 
     @Override
-    public Membre AddNewMembre(String nom, String prenom, Grade grade, Specialite specialite, LocalDate dateNaissance) {
+    public Membre getMembre(int id) {
         return null;
     }
 
     @Override
-    public Membre UpdateMembre(Long id) {
+    public Membre addNewMembre(String nom, String prenom, Grade grade, Specialite specialite, LocalDate dateNaissance) {
         return null;
     }
 
     @Override
-    public void DeleteMembre(Long id) {
+    public Membre updateMembre(Long id) {
+        return null;
+    }
+
+    @Override
+    public Membre updateMembreLabo(Long id, String idLabo) {
+        return null;
+    }
+
+    @Override
+    public void deleteMembre(Long id) {
 
     }
 
     @Override
-    public Membre AffectMembreLabo(int idMembre, String idLabo) {
+    public Membre affectMembreLabo(int idMembre, String idLabo) {
         return null;
     }
+
 }

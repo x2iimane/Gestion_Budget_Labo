@@ -12,20 +12,24 @@ public interface GestionMembreService {
 
     public List<Membre> getMembresByLabo(String titreLabo);
 
-    public List<Object[]> getAllmemebresLabo();
+    public List<Membre> getAllmembres();
 
-    public Membre AddNewMembre(String nom,
+    public Membre getMembre(int id);
+
+    public Membre addNewMembre(String nom,
                                String prenom,
                                Grade grade,
                                Specialite specialite,
                                LocalDate dateNaissance
     );
 
-    public Membre UpdateMembre(Long id);
+    public Membre updateMembre(Long id);
 
-    public void DeleteMembre(Long id);
+    public Membre updateMembreLabo(Long id, String idLabo);
 
-    public Membre AffectMembreLabo(int idMembre , String idLabo);
+    public void deleteMembre(Long id);
+
+    public Membre affectMembreLabo(int idMembre , String idLabo);
 
 
 

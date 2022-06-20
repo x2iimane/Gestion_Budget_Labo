@@ -1,7 +1,12 @@
 /**
- * 
+ *
  */
 package com.fssm.web.services;
+
+import com.fssm.web.entities.Laboratoire;
+import com.fssm.web.entities.Membre;
+
+import java.util.List;
 
 /**
  * @author Imane Rafiq
@@ -10,5 +15,25 @@ package com.fssm.web.services;
  */
 
 public interface GestionLaboratoireService {
+    public List<Membre> getMembresBLabo(String titreLabo);
+
+    public Laboratoire getLaboratoire(String idLabo);
+
+    public List<Laboratoire> getAllLaboratoires();
+
+    public List<Object[]> getAllmembresLabo();
+
+
+    public Laboratoire addNewLaboratoire(String id,
+                                         String intitule,
+                                         String acronyme,
+                                         String telephone,
+                                         String description
+    );
+
+    public void updateLaboratoire(String idLabo);
+
+
+    public void deleteLaboratoire(String idLabo);
 
 }

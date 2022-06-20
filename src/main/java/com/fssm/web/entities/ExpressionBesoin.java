@@ -33,7 +33,7 @@ public class ExpressionBesoin {
 	private String description;
 	private LocalDate createdAt;
 	private LocalDate updatedAt;
-	private boolean EtatValide;
+	private boolean etatValide;
 
 	public ExpressionBesoin(Motif motif, String description, LocalDate createdAt, LocalDate updatedAt,
 			boolean etatValide, Membre membre, AnneeCivile anneeCivile) {
@@ -42,17 +42,17 @@ public class ExpressionBesoin {
 		this.description = description;
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
-		EtatValide = etatValide;
+		etatValide = etatValide;
 		this.membre = membre;
 		this.anneeCivile = anneeCivile;
 	}
 
 	public boolean isEtatValide() {
-		return EtatValide;
+		return etatValide;
 	}
 
 	public void setEtatValide(boolean etatValide) {
-		EtatValide = etatValide;
+		etatValide = etatValide;
 	}
 
 	@ManyToOne
