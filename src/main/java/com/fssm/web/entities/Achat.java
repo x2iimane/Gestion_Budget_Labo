@@ -3,6 +3,8 @@
  */
 package com.fssm.web.entities;
 
+import lombok.*;
+
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -12,6 +14,11 @@ import javax.persistence.Entity;
 20 juin 2022 Gestion_Budget_Labo
  *
  */
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 @Entity
 @DiscriminatorValue(value = "achat")
 public class Achat {
