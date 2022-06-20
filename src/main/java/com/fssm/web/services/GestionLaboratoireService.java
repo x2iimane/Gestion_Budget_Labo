@@ -23,6 +23,7 @@ public interface GestionLaboratoireService {
 
     public List<Object[]> getAllmembresLabo();
 
+    public Laboratoire getLaboratoireMembre(int idMembre);
 
     public Laboratoire addNewLaboratoire(String id,
                                          String intitule,

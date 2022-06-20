@@ -3,12 +3,9 @@
  */
 package com.fssm.web.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,9 +23,15 @@ public class DotationMembre {
 	private int id;
 	private double somme;
 
+	//@ManyToOne
+	//AnneeCivile anneeCivile;
+	//@OneToMany(mappedBy = "anneeCivile", fetch = FetchType.LAZY)
+	//@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+	//private List<DotationMembre> dotationMembre = new ArrayList<DotationMembre>();
+
 	@ManyToOne
-	AnneeCivile anneeCivile;
-	
+	Budget budget;
+
 	@ManyToOne
 	Membre membre;
 
@@ -49,13 +52,6 @@ public class DotationMembre {
 		this.somme = somme;
 	}
 
-	public AnneeCivile getAnneeCivile() {
-		return anneeCivile;
-	}
-
-	public void setAnneeCivile(AnneeCivile anneeCivile) {
-		this.anneeCivile = anneeCivile;
-	}
 
 	public Membre getMembre() {
 		return membre;
@@ -67,10 +63,9 @@ public class DotationMembre {
 
 
 
-	public DotationMembre(double somme, AnneeCivile anneeCivile, Membre membre) {
+	public DotationMembre(double somme,  Membre membre) {
 		super();
 		this.somme = somme;
-		this.anneeCivile = anneeCivile;
 		this.membre = membre;
 	}
 	

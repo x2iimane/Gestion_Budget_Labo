@@ -22,7 +22,12 @@ public interface GestionMembreService {
                                Specialite specialite,
                                LocalDate dateNaissance
     );
-
+    public Membre addNewResponsable(String nom,
+                               String prenom,
+                               Grade grade,
+                               Specialite specialite,
+                               LocalDate dateNaissance
+    );
     public Membre updateMembre(Long id);
 
     public Membre updateMembreLabo(Long id, String idLabo);

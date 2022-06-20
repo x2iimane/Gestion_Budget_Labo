@@ -7,6 +7,9 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import com.fssm.web.entities.AnneeCivile;
+import com.fssm.web.entities.Budget;
+import com.fssm.web.entities.Laboratoire;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,10 +22,29 @@ import org.springframework.stereotype.Service;
 @Transactional
 public class GestionBudgetServiceImp implements GestionBudgetService{
 
-	 
-	
-	public List<Object[]> getBudgetsAnneeEncours () {
-		
+
+	@Override
+	public Budget addNewBudget(double sommeDisponible, double dotationBase, double dotationRecherche, AnneeCivile anneeCivile, Laboratoire laboratoire) {
+		return null;
+	}
+
+	@Override
+	public Budget updateBudget(Long id) {
+		return null;
+	}
+
+	@Override
+	public Budget deleteBudget(Long id) {
+		return null;
+	}
+
+	@Override
+	public Budget getBudgetAnneeLabo(String idAnnee, String idLabo) {
+		return null;
+	}
+
+	@Override
+	public List<Object[]> getBudgetsLabo(String idLabo) {
 		return null;
 	}
 }

@@ -38,9 +38,9 @@ public class AnneeCivile {
 	@JsonProperty(access = Access.WRITE_ONLY)
 	private List<Budget> budgets = new ArrayList<Budget>();
 
-	@OneToMany(mappedBy = "anneeCivile", fetch = FetchType.LAZY)
-	@JsonProperty(access = Access.WRITE_ONLY)
-	private List<DotationMembre> dotationMembre = new ArrayList<DotationMembre>();
+	//@OneToMany(mappedBy = "anneeCivile", fetch = FetchType.LAZY)
+	//@JsonProperty(access = Access.WRITE_ONLY)
+	//private List<DotationMembre> dotationMembre = new ArrayList<DotationMembre>();
 
 	@OneToMany(mappedBy = "anneeCivile", fetch = FetchType.LAZY)
 	@JsonProperty(access = Access.WRITE_ONLY)
@@ -53,14 +53,6 @@ public class AnneeCivile {
 
 	public void setBudgets(List<Budget> budgets) {
 		this.budgets = budgets;
-	}
-
-	public List<DotationMembre> getDotationMembre() {
-		return dotationMembre;
-	}
-
-	public void setDotationMembre(List<DotationMembre> dotationMembre) {
-		this.dotationMembre = dotationMembre;
 	}
 
 	public List<ExpressionBesoin> getExpressionBesoins() {

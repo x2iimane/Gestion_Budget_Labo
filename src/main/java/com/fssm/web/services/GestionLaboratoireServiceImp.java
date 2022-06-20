@@ -45,6 +45,11 @@ public class GestionLaboratoireServiceImp implements GestionLaboratoireService{
 	}
 
 	@Override
+	public Laboratoire getLaboratoireMembre(int idMembre) {
+		return null;
+	}
+
+	@Override
 	public Laboratoire addNewLaboratoire(String id, String intitule, String acronyme, String telephone, String description) {
 		return null;
 	}

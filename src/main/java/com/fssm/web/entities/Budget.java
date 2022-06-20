@@ -5,6 +5,7 @@ package com.fssm.web.entities;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,8 +30,13 @@ public class Budget {
 	private double dotationRecherche;
 	
 	@ManyToOne
-    private AnneeCivile anneeCivile;
-	
+	private AnneeCivile anneeCivile;
+
+
+	@OneToMany(mappedBy = "budget", fetch = FetchType.LAZY)
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+	List<DotationMembre> dotationMembres =new ArrayList<>();
+
 	@OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "laboratoire_id", referencedColumnName = "id")
     private Laboratoire laboratoire;

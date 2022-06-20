@@ -44,6 +44,11 @@ public class GestionMembreServiceImp implements GestionMembreService {
     }
 
     @Override
+    public Membre addNewResponsable(String nom, String prenom, Grade grade, Specialite specialite, LocalDate dateNaissance) {
+        return null;
+    }
+
+    @Override
     public Membre updateMembre(Long id) {
         return null;
     }
