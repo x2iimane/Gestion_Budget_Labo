@@ -21,7 +21,7 @@ import javax.persistence.Entity;
 @Setter
 @Entity
 @DiscriminatorValue(value = "achat")
-public class Achat {
+public class Achat extends ExpressionBesoin{
 	
 	//@Column()
 	private double somme = 0;
@@ -46,16 +46,7 @@ public class Achat {
 	public void setNbArticles(int nbArticles) {
 		this.nbArticles = nbArticles;
 	}
-	public Achat() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	public Achat(double somme, String designation, int nbArticles) {
-		super();
-		this.somme = somme;
-		this.designation = designation;
-		this.nbArticles = nbArticles;
-	}
+
 	
 	
 	

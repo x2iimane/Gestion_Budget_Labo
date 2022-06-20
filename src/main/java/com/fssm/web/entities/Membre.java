@@ -93,10 +93,7 @@ public class Membre {
 	public void setDateNaissance(LocalDate dateNaissance) {
 		this.dateNaissance = dateNaissance;
 	}
-	public Membre() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+
 	public Membre(String nom, String prenom, Grade grade, Specialite specialite, LocalDate dateNaissance) {
 		super();
 		this.nom = nom;

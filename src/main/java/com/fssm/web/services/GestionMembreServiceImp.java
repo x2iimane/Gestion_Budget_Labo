@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import com.fssm.web.entities.Membre;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,10 +20,10 @@ import org.springframework.stereotype.Service;
 @Transactional
 public class GestionMembreServiceImp implements GestionMembreService {
 
-	 
-	
-	public List<Object[]> getBudgetsAnneeEncours () {
-		
-		return null;
-	}
+
+    @Override
+    public List<Membre> getAllMembresLabo(String titreLabo) {
+        return null;
+    }
+
 }

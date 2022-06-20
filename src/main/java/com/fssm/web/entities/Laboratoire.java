@@ -99,28 +99,8 @@ public class Laboratoire {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public Laboratoire() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	public Laboratoire(String intitule, String acronyme, String telephone, String description) {
-		super();
-		this.intitule = intitule;
-		this.acronyme = acronyme;
-		this.telephone = telephone;
-		this.description = description;
-	}
-	public Laboratoire(String id, String intitule, String acronyme, String telephone, String description, Budget budget,
-			List<Membre> membres) {
-		super();
-		this.id = id;
-		this.intitule = intitule;
-		this.acronyme = acronyme;
-		this.telephone = telephone;
-		this.description = description;
-		this.budget = budget;
-		this.membres = membres;
-	}
+
+
 	
 
 }

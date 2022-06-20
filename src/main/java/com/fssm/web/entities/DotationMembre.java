@@ -65,10 +65,6 @@ public class DotationMembre {
 		this.membre = membre;
 	}
 
-	public DotationMembre() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 
 
 	public DotationMembre(double somme, AnneeCivile anneeCivile, Membre membre) {

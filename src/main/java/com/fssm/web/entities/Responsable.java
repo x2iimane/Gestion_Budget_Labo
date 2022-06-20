@@ -15,9 +15,10 @@ import lombok.NoArgsConstructor;
 19 juin 2022 Gestion_Budget_Labo
  *
  */
+@AllArgsConstructor
 @Entity
 @DiscriminatorValue(value = "responsable")
-@Data @NoArgsConstructor @AllArgsConstructor
+@Data
 public class Responsable extends Membre{
 
 	

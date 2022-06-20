@@ -4,15 +4,10 @@
 package com.fssm.web.entities;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 import com.fssm.web.enums.Motif;
 
@@ -65,6 +60,9 @@ public class ExpressionBesoin {
 	
 	@ManyToOne
 	AnneeCivile anneeCivile;
+
+	@OneToMany(mappedBy = "expressionBesoin", fetch = FetchType.LAZY)
+	List<Operation> operations =new ArrayList<>();
 
 	public long getId() {
 		return id;
@@ -122,10 +120,7 @@ public class ExpressionBesoin {
 		this.anneeCivile = anneeCivile;
 	}
 
-	public ExpressionBesoin() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+
 
 	public ExpressionBesoin(Motif motif, String description, LocalDate createdAt, LocalDate updatedAt, Membre membre,
 			AnneeCivile anneeCivile) {

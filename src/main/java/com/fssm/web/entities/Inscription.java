@@ -9,12 +9,16 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 import com.fssm.web.enums.Motif;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 /**
  * @author Imane Rafiq
 20 juin 2022 Gestion_Budget_Labo
  *
  */
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @DiscriminatorValue(value = "inscription")
 public class Inscription extends ExpressionBesoin{
@@ -40,21 +44,7 @@ public class Inscription extends ExpressionBesoin{
 	public void setDateEvenement(LocalDate dateEvenement) {
 		this.dateEvenement = dateEvenement;
 	}
-	public Inscription() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	public Inscription(Motif motif, String description, LocalDate createdAt, LocalDate updatedAt, Membre membre,
-			AnneeCivile anneeCivile) {
-		super(motif, description, createdAt, updatedAt, membre, anneeCivile);
-		// TODO Auto-generated constructor stub
-	}
-	public Inscription(double fraisInscription, String intituleEvenement, LocalDate dateEvenement) {
-		super();
-		this.fraisInscription = fraisInscription;
-		this.intituleEvenement = intituleEvenement;
-		this.dateEvenement = dateEvenement;
-	}
+
 	
 	
 }

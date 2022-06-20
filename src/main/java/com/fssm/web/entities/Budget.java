@@ -3,19 +3,14 @@
  */
 package com.fssm.web.entities;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Imane Rafiq 19 juin 2022 Gestion_Budget_Labo
@@ -39,6 +34,9 @@ public class Budget {
 	@OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "laboratoire_id", referencedColumnName = "id")
     private Laboratoire laboratoire;
+
+	@OneToMany(mappedBy = "budget", fetch = FetchType.LAZY)
+	List<Operation> operations =new ArrayList<>();
 
 	public long getId() {
 		return id;
@@ -98,12 +96,7 @@ public class Budget {
 		this.laboratoire = laboratoire;
 	}
 
-	public Budget() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	
-	
+
 	
 	
 

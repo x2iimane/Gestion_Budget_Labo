@@ -46,15 +46,6 @@ public class AnneeCivile {
 	@JsonProperty(access = Access.WRITE_ONLY)
 	private List<ExpressionBesoin> expressionBesoins = new ArrayList<ExpressionBesoin>();
 
-	public AnneeCivile(String intitule, boolean anneeEncours, List<Budget> budgets, List<DotationMembre> dotationMembre,
-			List<ExpressionBesoin> expressionBesoins) {
-		super();
-		this.intitule = intitule;
-		this.anneeEncours = anneeEncours;
-		this.budgets = budgets;
-		this.dotationMembre = dotationMembre;
-		this.expressionBesoins = expressionBesoins;
-	}
 
 	public List<Budget> getBudgets() {
 		return budgets;
@@ -93,17 +84,6 @@ public class AnneeCivile {
 	}
 
 	public void setAnneeEncours(boolean anneeEncours) {
-		this.anneeEncours = anneeEncours;
-	}
-
-	public AnneeCivile() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public AnneeCivile(String intitule, boolean anneeEncours) {
-		super();
-		this.intitule = intitule;
 		this.anneeEncours = anneeEncours;
 	}
 
