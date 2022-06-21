@@ -12,7 +12,7 @@ public interface GestionMembreService {
 
     public ResponseEntity<?> getMembresByLabo(int page, String titreLabo);
 
-    public List<Membre> getAllmembres();
+    public ResponseEntity<?>getAllmembres(int page);
 
     public Membre getMembre(Long id);
 

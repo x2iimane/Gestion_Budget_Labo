@@ -40,15 +40,20 @@ public class GestionMembreServiceImp implements GestionMembreService {
     public ResponseEntity<?> getMembresByLabo(int page, String titreLabo) {
         Pageable paging = (Pageable) PageRequest.of(page, 10);
         Laboratoire labo = laboratoireRepository.findById(titreLabo).get();
-        Page<Membre> membres = membreRepository.getMembresByLaboratoire(labo, (org.springframework.data.domain.Pageable) paging);
+        Page<Membre> membres = membreRepository.getMembresByLaboratoire(labo,paging);
         System.out.println(membres);
         return new ResponseEntity<>(membres, HttpStatus.OK);
      //   return new ResponseEntity<>(membres, HttpStatus.OK);
     }
 
     @Override
-    public List<Membre> getAllmembres() {
-        return membreRepository.findAll();
+    public ResponseEntity<?> getAllmembres(int page) {
+        Pageable paging = (Pageable) PageRequest.of(page, 10);
+        Page<Membre> membres = membreRepository.findAll(paging);
+        System.out.println(membres);
+        return new ResponseEntity<>(membres, HttpStatus.OK);
+
+        //return membreRepository.findAll();
     }
 
     @Override

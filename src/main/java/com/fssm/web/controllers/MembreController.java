@@ -23,11 +23,19 @@ public class MembreController {
 
     @Autowired
     GestionMembreService gestionMembreService;
+
+    @GetMapping("/listeMembres")
+    //@PreAuthorize("hasRole('ADMIN')")
+    //@PreAuthorize("hasRole('RESPONSABLE')")
+    public ResponseEntity<?> getMembresByLabo(@RequestParam("page") int page) {
+        return gestionMembreService.getAllmembres(page);
+    }
     @GetMapping("/listeMembresLabo/{id}")
     //@PreAuthorize("hasRole('ADMIN')")
     //@PreAuthorize("hasRole('RESPONSABLE')")
     public ResponseEntity<?> getMembresByLabo(@RequestParam("page") int page , @PathVariable String titreLabo) {
-
-        return gestionMembreService.getMembresByLabo(page,titreLabo);
+            return gestionMembreService.getMembresByLabo(page,titreLabo);
     }
+
+
 }
