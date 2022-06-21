@@ -21,13 +21,14 @@ public interface GestionLaboratoireService {
 
     public Laboratoire getLaboratoire(String idLabo);
 
-    public List<Laboratoire> getAllLaboratoires();
 
     Page<Laboratoire> getAllLaboratoires(int page);
 
     public List<Object[]> getAllmembresLabo();
 
-    public Laboratoire getLaboratoireMembre(int idMembre);
+    Laboratoire getLaboratoireMembre(Long idMembre);
+
+    Laboratoire updateLaboratoire(Laboratoire lab);
 
     public Laboratoire addNewLaboratoire(String id,
                                          String intitule,
@@ -35,6 +36,8 @@ public interface GestionLaboratoireService {
                                          String telephone,
                                          String description
     );
+
+    Laboratoire addNewLaboratoire(Laboratoire l);
 
     public void updateLaboratoire(String idLabo);
 

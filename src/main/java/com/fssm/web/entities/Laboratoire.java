@@ -47,15 +47,12 @@ public class Laboratoire {
 	List<Membre> membres = new ArrayList<Membre>();
 	
 	
-	public Laboratoire(String intitule, String acronyme, String telephone, String description, Budget budget,
-			List<Membre> membres) {
+	public Laboratoire(String intitule, String acronyme, String telephone, String description) {
 		super();
 		this.intitule = intitule;
 		this.acronyme = acronyme;
 		this.telephone = telephone;
 		this.description = description;
-		this.budget = budget;
-		this.membres = membres;
 	}
 	public Budget getBudget() {
 		return budget;

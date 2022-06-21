@@ -80,6 +80,13 @@ public class MembreController {
             return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
     }
 
+    @DeleteMapping("/deleteMembre/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    //@PreAuthorize("hasRole('RESPONSABLE')")
+    public ResponseEntity<?> deleteMembre(@PathVariable Long id) {
+        gestionMembreService.deleteMembre(id);
+        return ResponseEntity.ok(new MessageResponse("Bien supprimé"));
+    }
 
 
 

@@ -47,10 +47,7 @@ public class GestionLaboratoireServiceImp implements GestionLaboratoireService{
 		return laboratoire;
 	}
 
-	@Override
-	public List<Laboratoire> getAllLaboratoires() {
-		return null;
-	}
+
 
 	@Override
 	public Page<Laboratoire> getAllLaboratoires(int page) {
@@ -65,14 +62,18 @@ public class GestionLaboratoireServiceImp implements GestionLaboratoireService{
 		return null;
 	}
 
-	@Override
-	public Laboratoire getLaboratoireMembre(int idMembre) {
-		return null;
-	}
 
 	@Override
-	public Laboratoire addNewLaboratoire(String id, String intitule, String acronyme, String telephone, String description) {
-		return null;
+	public Laboratoire getLaboratoireMembre(Long idMembre) {
+		Membre membre = membreRepository.findById(idMembre).get();
+		return membre.getLaboratoire();
+	}
+
+
+	@Override
+	public Laboratoire addNewLaboratoire(Laboratoire l) {
+		Laboratoire laboratoire=new Laboratoire(l.getId(),l.getIntitule(),l.getTelephone(),l.getDescription());
+		return laboratoireRepository.save(laboratoire);
 	}
 
 	@Override
@@ -81,8 +82,24 @@ public class GestionLaboratoireServiceImp implements GestionLaboratoireService{
 	}
 
 	@Override
-	public void deleteLaboratoire(String idLabo) {
+	public Laboratoire updateLaboratoire(Laboratoire lab) {
+	Laboratoire laboratoire = laboratoireRepository.findById(lab.getId()).get();
+	laboratoire.setDescription(lab.getDescription());
+	laboratoire.setIntitule(lab.getIntitule());
+	laboratoire.setAcronyme(lab.getAcronyme());
+	laboratoire.setTelephone(lab.getTelephone());
+	return laboratoireRepository.save(laboratoire);
 
+	}
+
+	@Override
+	public Laboratoire addNewLaboratoire(String id, String intitule, String acronyme, String telephone, String description) {
+		return null;
+	}
+	@Override
+	public void deleteLaboratoire(String idLabo) {
+		Laboratoire laboratoire = laboratoireRepository.findById(idLabo).get();
+		laboratoireRepository.delete(laboratoire);
 	}
 
 }
