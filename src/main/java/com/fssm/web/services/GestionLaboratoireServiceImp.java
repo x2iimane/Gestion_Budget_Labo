@@ -46,7 +46,8 @@ public class GestionLaboratoireServiceImp implements GestionLaboratoireService{
 
 	@Override
 	public Laboratoire getLaboratoire(String idLabo) {
-		return null;
+		Laboratoire laboratoire = laboratoireRepository.findById(idLabo).get();
+		return laboratoire;
 	}
 
 	@Override
