@@ -112,13 +112,31 @@ public class GestionMembreServiceImp implements GestionMembreService {
     }
 
     @Override
-    public void deleteMembre(Long id) {
+    public Membre updateMembreLabo(Membre membre, String idLabo) {
 
+        Membre m = membreRepository.findById(membre.getId()).get();
+        Laboratoire l = laboratoireRepository.findById(idLabo).get();
+
+        m.setNom(membre.getNom());
+        m.setPrenom(membre.getPrenom());
+        m.setSpecialite(membre.getSpecialite());
+        m.setDateNaissance(membre.getDateNaissance());
+        // m.setLaboratoire(membre.getLaboratoire());
+        return    membreRepository.save(m);
     }
 
     @Override
-    public Membre affectMembreLabo(int idMembre, String idLabo) {
-        return null;
+    public void deleteMembre(Long id) {
+        Membre m = membreRepository.findById(id).get();
+        membreRepository.delete(m);
+    }
+
+    @Override
+    public Membre affectMembreLabo(Long idMembre, String idLabo) {
+        Membre m = membreRepository.findById(idMembre).get();
+        Laboratoire l = laboratoireRepository.findById(idLabo).get();
+        m.setLaboratoire(l);
+        return membreRepository.save(m);
     }
 
 }

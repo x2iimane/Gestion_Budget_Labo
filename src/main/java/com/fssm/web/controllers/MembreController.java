@@ -63,5 +63,16 @@ public class MembreController {
             return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
     }
 
+    @PutMapping("/affectLaboMembre")
+    // @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<?> affectLaboMembre(@RequestBody Long idMembre , @RequestBody String idLabo) {
+        if (gestionMembreService.affectMembreLabo(idMembre,idLabo) != null)
+            return ResponseEntity.ok(new MessageResponse("Bien affcté"));
+        else
+            return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
+    }
+
+
+
 
 }

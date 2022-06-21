@@ -34,9 +34,11 @@ public interface GestionMembreService {
 
     public Membre updateMembreLabo(Long id, String idLabo);
 
+    Membre updateMembreLabo(Membre membre, String idLabo);
+
     public void deleteMembre(Long id);
 
-    public Membre affectMembreLabo(int idMembre , String idLabo);
+    public Membre affectMembreLabo(Long idMembre , String idLabo);
 
 
 
