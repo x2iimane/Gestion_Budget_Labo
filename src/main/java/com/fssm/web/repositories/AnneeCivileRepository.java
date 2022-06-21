@@ -17,4 +17,5 @@ import com.fssm.web.entities.Membre;
 @Repository
 public interface AnneeCivileRepository extends JpaRepository<AnneeCivile, String>{
 
+    AnneeCivile findByAnneeEncours(Boolean anneeEncCours);
 }

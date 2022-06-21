@@ -39,6 +39,8 @@ public interface GestionExpressionBesoinService {
 
     ExpressionBesoin exprimerNewAchat(ExpressionBesoin expressionBesoin, Membre membre, AnneeCivile anneeCivile, String designation, int nbArticles);
 
+    Operation validerExpressionBesoin(ExpressionBesoin expressionBesoin, double totalSomme, TypeOperation typeOperation, LocalDate dateTransact);
+
     public ExpressionBesoin exprimerNewMobilite(Motif motif, String description,
                                                 LocalDate createdAt,
                                                 LocalDate updatedAt,

@@ -90,9 +90,10 @@ public class GestionExpressionBesoinServiceImp implements GestionExpressionBesoi
         return null;
     }
     @Override
-    public Operation validerExpressionBesoin(ExpressionBesoin expressionBesoin, Budget budjet, double totalSomme, TypeOperation typeOperation, LocalDate dateTransact) {
+    public Operation validerExpressionBesoin(ExpressionBesoin expressionBesoin, double totalSomme, TypeOperation typeOperation, LocalDate dateTransact) {
         ExpressionBesoin exp = expressionBesoinRepository.findById(expressionBesoin.getId()).get();
-        Budget budget = budgetRepository.findById(budjet.getId()).get();
+       AnneeCivile anneeCivile = anneeCivileRepository.findByAnneeEncours(true);
+        Budget budget = budgetRepository.findByAnneeCivile(anneeCivile);
         DotationMembre dotationMembre = dotationMembreRepository.getDotationByBudgetAndMembre(budget.getId(), (exp.getMembre().getId()));
         if ((dotationMembre.getSomme() >= totalSomme) && (budget.getSommeDisponible() >= totalSomme)) {
             budget.setSommeDisponible(budget.getSommeDisponible() - totalSomme);
@@ -103,7 +104,7 @@ public class GestionExpressionBesoinServiceImp implements GestionExpressionBesoi
             Operation operation = new Operation();
             operation.setExpressionBesoin(exp);
             operation.setTypeOperation(typeOperation);
-            operation.setBudget(budjet);
+            operation.setBudget(budget);
             operation.setDateTransact(dateTransact);
             operation.setTotalSomme(totalSomme);
             expressionBesoinRepository.save(exp);
@@ -202,6 +203,11 @@ public class GestionExpressionBesoinServiceImp implements GestionExpressionBesoi
         return null;
     }
 
+
+    @Override
+    public Operation validerExpressionBesoin(ExpressionBesoin expressionBesoin, Budget budjet, double totalSomme, TypeOperation typeOperation, LocalDate dateTransact) {
+        return null;
+    }
 
     @Override
     public ExpressionBesoin effectuerExpressionBesoin(Motif motif, String description, LocalDate createdAt, LocalDate updatedAt, Membre membre, AnneeCivile anneeCivile, String type) {

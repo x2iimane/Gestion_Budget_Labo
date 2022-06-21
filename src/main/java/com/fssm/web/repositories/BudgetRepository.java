@@ -3,6 +3,7 @@
  */
 package com.fssm.web.repositories;
 
+import com.fssm.web.entities.AnneeCivile;
 import com.fssm.web.entities.DotationMembre;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -19,5 +20,5 @@ import com.fssm.web.entities.Membre;
  */
 @Repository
 public interface BudgetRepository extends JpaRepository<Budget, Long>{
-
+Budget findByAnneeCivile(AnneeCivile anneeCivile);
    }
