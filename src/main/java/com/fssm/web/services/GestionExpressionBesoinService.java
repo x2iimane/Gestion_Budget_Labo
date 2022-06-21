@@ -3,13 +3,11 @@
  */
 package com.fssm.web.services;
 
-import com.fssm.web.entities.AnneeCivile;
-import com.fssm.web.entities.ExpressionBesoin;
-import com.fssm.web.entities.Membre;
-import com.fssm.web.entities.Operation;
+import com.fssm.web.entities.*;
 import com.fssm.web.enums.Etat;
 import com.fssm.web.enums.Motif;
 import com.fssm.web.enums.TypeOperation;
+import org.springframework.data.domain.Page;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -21,11 +19,15 @@ import java.util.List;
 
 public interface GestionExpressionBesoinService {
 
+    Operation validerExpressionBesoin(ExpressionBesoin expressionBesoin, Budget budjet, double totalSomme, TypeOperation typeOperation, LocalDate dateTransact);
+
     public ExpressionBesoin effectuerExpressionBesoin(Motif motif, String description,
                                                       LocalDate createdAt,
                                                       LocalDate updatedAt,
                                                       Membre membre,
                                                       AnneeCivile anneeCivile, String type);
+
+    ExpressionBesoin effectuerExpressionBesoin(ExpressionBesoin expressionBesoin, Membre membre, AnneeCivile anneeCivile, String type);
 
     public ExpressionBesoin exprimerNewAchat(Motif motif, String description,
                                              LocalDate createdAt,
@@ -34,6 +36,8 @@ public interface GestionExpressionBesoinService {
                                              AnneeCivile anneeCivile,
                                              String designation,
                                              int nbArticles);
+
+    ExpressionBesoin exprimerNewAchat(ExpressionBesoin expressionBesoin, Membre membre, AnneeCivile anneeCivile, String designation, int nbArticles);
 
     public ExpressionBesoin exprimerNewMobilite(Motif motif, String description,
                                                 LocalDate createdAt,
@@ -46,6 +50,8 @@ public interface GestionExpressionBesoinService {
                                                 LocalDate dateRetour
     );
 
+    ExpressionBesoin exprimerNewMobilite(ExpressionBesoin expressionBesoin, Membre membre, AnneeCivile anneeCivile, double prixBillet, double fraisSejour, LocalDate dateDepart, LocalDate dateRetour);
+
     public ExpressionBesoin exprimerewInscription(Motif motif, String description,
                                                   LocalDate createdAt,
                                                   LocalDate updatedAt,
@@ -56,9 +62,13 @@ public interface GestionExpressionBesoinService {
                                                   LocalDate dateEvenement
     );
 
+    ExpressionBesoin exprimerewInscription(ExpressionBesoin expressionBesoin, Membre membre, AnneeCivile anneeCivile, double fraisInscription, String intituleEvenement, LocalDate dateEvenement);
+
     public ExpressionBesoin getExpressionBesoinById(Long idExpBesoin);
 
     public List<ExpressionBesoin> getExpressionsMembre(int idMembre);
+
+    Page<ExpressionBesoin> getExpressionsMembre(Membre Membre, int page);
 
     public List<Object[]> getAllExpressionMembresLabo();
 

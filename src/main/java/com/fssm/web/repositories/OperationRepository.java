@@ -3,14 +3,15 @@
  */
 package com.fssm.web.repositories;
 
+import com.fssm.web.entities.Laboratoire;
+import com.fssm.web.entities.Membre;
+import com.fssm.web.entities.Operation;
 import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.fssm.web.entities.AnneeCivile;
-import com.fssm.web.entities.ExpressionBesoin;
-import com.fssm.web.entities.Membre;
-
+import javax.persistence.criteria.CriteriaBuilder;
 import java.awt.print.Pageable;
 
 /**
@@ -19,7 +20,8 @@ import java.awt.print.Pageable;
  *
  */
 @Repository
-public interface ExpressionBesoinRepository extends JpaRepository<ExpressionBesoin, Long>{
+public interface OperationRepository extends JpaRepository<Operation, Integer>{
 
-    Page<ExpressionBesoin> findByMembre(Membre membre, Pageable pageable);
+
+
 }
