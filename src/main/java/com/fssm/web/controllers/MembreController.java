@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,14 +29,14 @@ public class MembreController {
     GestionMembreService gestionMembreService;
 
     @GetMapping("/listeMembres")
-    //@PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     //@PreAuthorize("hasRole('RESPONSABLE')")
     public ResponseEntity<?> getAllMembres(@RequestParam("page") int page) {
         Page<Membre> membres = gestionMembreService.getAllmembres(page);
         return new ResponseEntity<>(membres, HttpStatus.OK);
     }
     @GetMapping("/listeMembresLabo/{id}")
-    //@PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     //@PreAuthorize("hasRole('RESPONSABLE')")
     public ResponseEntity<?> getMembresByLabo(@RequestParam("page") int page , @PathVariable String titreLabo) {
 
@@ -45,7 +46,7 @@ public class MembreController {
     }
 
     @PostMapping("/addMembreChercheur")
-   // @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> addNewMembre(@RequestBody Membre m) {
         if (gestionMembreService.addNewMembre(m.getNom(),m.getPrenom(),
                 m.getGrade(),m.getSpecialite(),m.getDateNaissance()) != null)
@@ -55,7 +56,7 @@ public class MembreController {
     }
 
     @PutMapping("/updateMembre")
-    // @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> updateMembre(@RequestBody Membre m) {
         if (gestionMembreService.updateMembre(m) != null)
             return ResponseEntity.ok(new MessageResponse("Bien modifié"));
@@ -64,7 +65,7 @@ public class MembreController {
     }
 
     @PutMapping("/affectLaboMembre")
-    // @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> affectLaboMembre(@RequestBody Long idMembre , @RequestBody String idLabo) {
         if (gestionMembreService.affectMembreLabo(idMembre,idLabo) != null)
             return ResponseEntity.ok(new MessageResponse("Bien affcté"));

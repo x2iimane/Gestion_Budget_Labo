@@ -3,6 +3,7 @@
  */
 package com.fssm.web.services;
 
+import java.awt.print.Pageable;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -12,7 +13,11 @@ import com.fssm.web.entities.Laboratoire;
 import com.fssm.web.entities.Membre;
 import com.fssm.web.enums.Grade;
 import com.fssm.web.enums.Specialite;
+import com.fssm.web.repositories.LaboratoireRepository;
+import com.fssm.web.repositories.MembreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 /**
@@ -24,11 +29,22 @@ import org.springframework.stereotype.Service;
 @Transactional
 public class GestionLaboratoireServiceImp implements GestionLaboratoireService{
 
-	@Override
-	public List<Membre> getMembresBLabo(String titreLabo) {
+	@Autowired
+	LaboratoireRepository laboratoireRepository;
 
-		return null;
+	@Autowired
+	MembreRepository membreRepository;
+
+	@Override
+	public Page<Membre> getMembresBLabo(String titreLabo, int page) {
+		Pageable paging = (Pageable) PageRequest.of(page, 10);
+		Laboratoire labo = laboratoireRepository.findById(titreLabo).get();
+		Page<Membre> membres = membreRepository.findByLaboratoire(labo,paging);
+		System.out.println(membres);
+		return membres;
 	}
+
+
 
 	@Override
 	public Laboratoire getLaboratoire(String idLabo) {

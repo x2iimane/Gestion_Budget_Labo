@@ -29,4 +29,7 @@ public interface MembreRepository extends JpaRepository<Membre, Long>{
     Page<Membre> findAll(Pageable pageable);
 
 
+    Page<Membre> findByLaboratoire(Laboratoire laboratoire,Pageable pageable);
+
+
 }

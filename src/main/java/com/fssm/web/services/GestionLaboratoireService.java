@@ -5,7 +5,9 @@ package com.fssm.web.services;
 
 import com.fssm.web.entities.Laboratoire;
 import com.fssm.web.entities.Membre;
+import org.springframework.data.domain.Page;
 
+import java.awt.print.Pageable;
 import java.util.List;
 
 /**
@@ -15,7 +17,7 @@ import java.util.List;
  */
 
 public interface GestionLaboratoireService {
-    public List<Membre> getMembresBLabo(String titreLabo);
+    public Page<Membre> getMembresBLabo(String titreLabo, int page);
 
     public Laboratoire getLaboratoire(String idLabo);
 
