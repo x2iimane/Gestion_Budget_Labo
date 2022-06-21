@@ -23,6 +23,8 @@ public interface GestionLaboratoireService {
 
     public List<Laboratoire> getAllLaboratoires();
 
+    Page<Laboratoire> getAllLaboratoires(int page);
+
     public List<Object[]> getAllmembresLabo();
 
     public Laboratoire getLaboratoireMembre(int idMembre);

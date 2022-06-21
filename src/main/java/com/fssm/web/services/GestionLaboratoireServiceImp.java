@@ -4,15 +4,12 @@
 package com.fssm.web.services;
 
 import java.awt.print.Pageable;
-import java.time.LocalDate;
 import java.util.List;
 
 import javax.transaction.Transactional;
 
 import com.fssm.web.entities.Laboratoire;
 import com.fssm.web.entities.Membre;
-import com.fssm.web.enums.Grade;
-import com.fssm.web.enums.Specialite;
 import com.fssm.web.repositories.LaboratoireRepository;
 import com.fssm.web.repositories.MembreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,6 +50,14 @@ public class GestionLaboratoireServiceImp implements GestionLaboratoireService{
 	@Override
 	public List<Laboratoire> getAllLaboratoires() {
 		return null;
+	}
+
+	@Override
+	public Page<Laboratoire> getAllLaboratoires(int page) {
+		Pageable paging = (Pageable) PageRequest.of(page, 10);
+		Page<Laboratoire> laboratoires = laboratoireRepository.findAll(paging);
+		System.out.println(laboratoires);
+		return laboratoires;
 	}
 
 	@Override

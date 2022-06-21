@@ -26,4 +26,7 @@ public class LaboratoireController {
         Laboratoire laboratoire = gestionLaboratoireService.getLaboratoire(id);
         return new ResponseEntity<>(laboratoire, HttpStatus.OK);
     }
+
+
+
 }
