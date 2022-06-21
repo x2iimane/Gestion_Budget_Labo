@@ -7,6 +7,7 @@ import com.fssm.web.entities.Membre;
 import com.fssm.web.payload.response.MessageResponse;
 import com.fssm.web.services.GestionMembreService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,14 +30,18 @@ public class MembreController {
     @GetMapping("/listeMembres")
     //@PreAuthorize("hasRole('ADMIN')")
     //@PreAuthorize("hasRole('RESPONSABLE')")
-    public ResponseEntity<?> getMembresByLabo(@RequestParam("page") int page) {
-        return gestionMembreService.getAllmembres(page);
+    public ResponseEntity<?> getAllMembres(@RequestParam("page") int page) {
+        Page<Membre> membres = gestionMembreService.getAllmembres(page);
+        return new ResponseEntity<>(membres, HttpStatus.OK);
     }
     @GetMapping("/listeMembresLabo/{id}")
     //@PreAuthorize("hasRole('ADMIN')")
     //@PreAuthorize("hasRole('RESPONSABLE')")
     public ResponseEntity<?> getMembresByLabo(@RequestParam("page") int page , @PathVariable String titreLabo) {
-            return gestionMembreService.getMembresByLabo(page,titreLabo);
+
+        Page<Membre> membres = gestionMembreService.getMembresByLabo(page,titreLabo);
+        return new ResponseEntity<>(membres, HttpStatus.OK);
+
     }
 
     @PostMapping("/addMembreChercheur")
@@ -57,5 +62,6 @@ public class MembreController {
         else
             return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
     }
+
 
 }

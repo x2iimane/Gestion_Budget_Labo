@@ -36,21 +36,23 @@ public class GestionMembreServiceImp implements GestionMembreService {
     LaboratoireRepository laboratoireRepository;
 
     @Override
-    public ResponseEntity<?> getMembresByLabo(int page, String titreLabo) {
+    public Page<Membre> getMembresByLabo(int page, String titreLabo) {
         Pageable paging = (Pageable) PageRequest.of(page, 10);
         Laboratoire labo = laboratoireRepository.findById(titreLabo).get();
         Page<Membre> membres = membreRepository.getMembresByLaboratoire(labo,paging);
         System.out.println(membres);
-        return new ResponseEntity<>(membres, HttpStatus.OK);
+        return membres;
+        //return new ResponseEntity<>(membres, HttpStatus.OK);
      //   return new ResponseEntity<>(membres, HttpStatus.OK);
     }
 
     @Override
-    public ResponseEntity<?> getAllmembres(int page) {
+    public Page<Membre> getAllmembres(int page) {
         Pageable paging = (Pageable) PageRequest.of(page, 10);
         Page<Membre> membres = membreRepository.findAll(paging);
         System.out.println(membres);
-        return new ResponseEntity<>(membres, HttpStatus.OK);
+        return membres;
+       // return new ResponseEntity<>(membres, HttpStatus.OK);
 
         //return membreRepository.findAll();
     }
