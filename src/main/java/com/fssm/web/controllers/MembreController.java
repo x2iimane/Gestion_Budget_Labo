@@ -3,7 +3,13 @@
  */
 package com.fssm.web.controllers;
 
-import org.springframework.web.bind.annotation.RestController;
+import com.fssm.web.entities.Membre;
+import com.fssm.web.services.GestionMembreService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * @author Imane Rafiq
@@ -12,6 +18,16 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @RestController
+@RequestMapping("/api/membre")
 public class MembreController {
 
+    @Autowired
+    GestionMembreService gestionMembreService;
+    @GetMapping("/listeMembresLabo/{id}")
+    //@PreAuthorize("hasRole('ADMIN')")
+    //@PreAuthorize("hasRole('RESPONSABLE')")
+    public ResponseEntity<?> getMembresByLabo(@RequestParam("page") int page , @PathVariable String titreLabo) {
+
+        return gestionMembreService.getMembresByLabo(page,titreLabo);
+    }
 }

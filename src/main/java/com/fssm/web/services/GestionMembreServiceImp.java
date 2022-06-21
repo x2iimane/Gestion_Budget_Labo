@@ -4,23 +4,28 @@
 package com.fssm.web.services;
 
 import com.fssm.web.entities.Chercheur;
+import com.fssm.web.entities.Laboratoire;
 import com.fssm.web.entities.Membre;
 import com.fssm.web.entities.Responsable;
 import com.fssm.web.enums.Grade;
 import com.fssm.web.enums.Specialite;
+import com.fssm.web.repositories.LaboratoireRepository;
 import com.fssm.web.repositories.MembreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import javax.swing.*;
 import javax.transaction.Transactional;
+import java.awt.print.Pageable;
 import java.time.LocalDate;
 import java.util.List;
 
 /**
  * @author Imane Rafiq
-19 juin 2022 Gestion_Budget_Labo
- *
+ * 19 juin 2022 Gestion_Budget_Labo
  */
 @Service
 @Transactional
@@ -28,10 +33,17 @@ public class GestionMembreServiceImp implements GestionMembreService {
 
     @Autowired
     MembreRepository membreRepository;
+    @Autowired
+    LaboratoireRepository laboratoireRepository;
 
     @Override
-    public List<Membre> getMembresByLabo(String titreLabo) {
-        return membreRepository.getMembresByLaboratoire(titreLabo);
+    public ResponseEntity<?> getMembresByLabo(int page, String titreLabo) {
+        Pageable paging = (Pageable) PageRequest.of(page, 10);
+        Laboratoire labo = laboratoireRepository.findById(titreLabo).get();
+        Page<Membre> membres = membreRepository.getMembresByLaboratoire(labo, (org.springframework.data.domain.Pageable) paging);
+        System.out.println(membres);
+        return new ResponseEntity<>(membres, HttpStatus.OK);
+     //   return new ResponseEntity<>(membres, HttpStatus.OK);
     }
 
     @Override

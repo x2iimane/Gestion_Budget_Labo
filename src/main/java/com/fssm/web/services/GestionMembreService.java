@@ -1,16 +1,16 @@
 package com.fssm.web.services;
 
-import com.fssm.web.entities.Laboratoire;
 import com.fssm.web.entities.Membre;
 import com.fssm.web.enums.Grade;
 import com.fssm.web.enums.Specialite;
+import org.springframework.http.ResponseEntity;
 
 import java.time.LocalDate;
 import java.util.List;
 
 public interface GestionMembreService {
 
-    public List<Membre> getMembresByLabo(String titreLabo);
+    public ResponseEntity<?> getMembresByLabo(int page, String titreLabo);
 
     public List<Membre> getAllmembres();
 
