@@ -1,18 +1,19 @@
 /**
- * 
+ *
  */
 package com.fssm.web.services;
-
-import java.time.LocalDate;
-import java.util.List;
-
-import javax.transaction.Transactional;
 
 import com.fssm.web.entities.Membre;
 import com.fssm.web.enums.Grade;
 import com.fssm.web.enums.Specialite;
+import com.fssm.web.repositories.MembreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.swing.*;
+import javax.transaction.Transactional;
+import java.time.LocalDate;
+import java.util.List;
 
 /**
  * @author Imane Rafiq
@@ -23,19 +24,22 @@ import org.springframework.stereotype.Service;
 @Transactional
 public class GestionMembreServiceImp implements GestionMembreService {
 
+    @Autowired
+    MembreRepository membreRepository;
+
     @Override
     public List<Membre> getMembresByLabo(String titreLabo) {
-        return null;
+        return membreRepository.getMembresByLaboratoire(titreLabo);
     }
 
     @Override
     public List<Membre> getAllmembres() {
-        return null;
+        return membreRepository.findAll();
     }
 
     @Override
-    public Membre getMembre(int id) {
-        return null;
+    public Membre getMembre(Long id) {
+        return membreRepository.findById(id).get();
     }
 
     @Override

@@ -22,7 +22,6 @@ import org.springframework.stereotype.Service;
 @Transactional
 public class GestionBudgetServiceImp implements GestionBudgetService{
 
-
 	@Override
 	public Budget addNewBudget(double sommeDisponible, double dotationBase, double dotationRecherche, AnneeCivile anneeCivile, Laboratoire laboratoire) {
 		return null;

@@ -14,7 +14,7 @@ public interface GestionMembreService {
 
     public List<Membre> getAllmembres();
 
-    public Membre getMembre(int id);
+    public Membre getMembre(Long id);
 
     public Membre addNewMembre(String nom,
                                String prenom,
