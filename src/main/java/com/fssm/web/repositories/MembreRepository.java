@@ -28,4 +28,5 @@ public interface MembreRepository extends JpaRepository<Membre, Long>{
     @Query(value = "SELECT m FROM Membre m ORDER BY m.id ASC")
     Page<Membre> findAll(Pageable pageable);
 
+
 }

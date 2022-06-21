@@ -21,7 +21,6 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.awt.print.Pageable;
 import java.time.LocalDate;
-import java.util.List;
 
 /**
  * @author Imane Rafiq
@@ -57,8 +56,10 @@ public class GestionMembreServiceImp implements GestionMembreService {
     }
 
     @Override
-    public Membre getMembre(Long id) {
-        return membreRepository.findById(id).get();
+    public ResponseEntity<?> getMembre(Long id) {
+        Membre membre = membreRepository.findById(id).get();
+        System.out.println(membre);
+        return new ResponseEntity<>(membre, HttpStatus.OK);
     }
 
     @Override
@@ -71,6 +72,7 @@ public class GestionMembreServiceImp implements GestionMembreService {
         membre.setDateNaissance(dateNaissance);
         membreRepository.save(membre);
         return membreRepository.save(membre);
+        //return ResponseEntity.ok(new MessageResponsable("Bien ajouté"));
     }
 
     @Override
@@ -88,6 +90,18 @@ public class GestionMembreServiceImp implements GestionMembreService {
     @Override
     public Membre updateMembre(Long id) {
         return null;
+    }
+
+    @Override
+    public Membre updateMembre(Membre membre) {
+       Membre m = membreRepository.findById(membre.getId()).get();
+        m.setNom(membre.getNom());
+        m.setPrenom(membre.getPrenom());
+        m.setSpecialite(membre.getSpecialite());
+        m.setDateNaissance(membre.getDateNaissance());
+        // m.setLaboratoire(membre.getLaboratoire());
+        return    membreRepository.save(m);
+
     }
 
     @Override

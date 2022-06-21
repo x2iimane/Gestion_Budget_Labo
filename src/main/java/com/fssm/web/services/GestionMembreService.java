@@ -12,9 +12,9 @@ public interface GestionMembreService {
 
     public ResponseEntity<?> getMembresByLabo(int page, String titreLabo);
 
-    public ResponseEntity<?>getAllmembres(int page);
+    public ResponseEntity<?> getAllmembres(int page);
 
-    public Membre getMembre(Long id);
+    public ResponseEntity<?> getMembre(Long id);
 
     public Membre addNewMembre(String nom,
                                String prenom,
@@ -29,6 +29,8 @@ public interface GestionMembreService {
                                LocalDate dateNaissance
     );
     public Membre updateMembre(Long id);
+
+    Membre updateMembre(Membre membre);
 
     public Membre updateMembreLabo(Long id, String idLabo);
 
