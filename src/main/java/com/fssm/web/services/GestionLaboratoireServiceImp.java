@@ -26,6 +26,7 @@ public class GestionLaboratoireServiceImp implements GestionLaboratoireService{
 
 	@Override
 	public List<Membre> getMembresBLabo(String titreLabo) {
+
 		return null;
 	}
 

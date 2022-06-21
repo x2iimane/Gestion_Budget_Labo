@@ -3,7 +3,9 @@
  */
 package com.fssm.web.services;
 
+import com.fssm.web.entities.Chercheur;
 import com.fssm.web.entities.Membre;
+import com.fssm.web.entities.Responsable;
 import com.fssm.web.enums.Grade;
 import com.fssm.web.enums.Specialite;
 import com.fssm.web.repositories.MembreRepository;
@@ -44,12 +46,26 @@ public class GestionMembreServiceImp implements GestionMembreService {
 
     @Override
     public Membre addNewMembre(String nom, String prenom, Grade grade, Specialite specialite, LocalDate dateNaissance) {
-        return null;
+        Membre membre = new Chercheur();
+        membre.setNom(nom);
+        membre.setPrenom(prenom);
+        membre.setSpecialite(specialite);
+        membre.setGrade(grade);
+        membre.setDateNaissance(dateNaissance);
+        membreRepository.save(membre);
+        return membreRepository.save(membre);
     }
 
     @Override
     public Membre addNewResponsable(String nom, String prenom, Grade grade, Specialite specialite, LocalDate dateNaissance) {
-        return null;
+        Membre membre = new Responsable();
+        membre.setNom(nom);
+        membre.setPrenom(prenom);
+        membre.setSpecialite(specialite);
+        membre.setGrade(grade);
+        membre.setDateNaissance(dateNaissance);
+        membreRepository.save(membre);
+        return membreRepository.save(membre);
     }
 
     @Override
