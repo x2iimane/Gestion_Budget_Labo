@@ -28,6 +28,13 @@ public class MembreController {
     @Autowired
     GestionMembreService gestionMembreService;
 
+    @GetMapping("/membre/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    //@PreAuthorize("hasRole('RESPONSABLE')")
+    public ResponseEntity<?> getMembre(@PathVariable Long idMembre) {
+        Membre membre = gestionMembreService.getMembre(idMembre);
+        return new ResponseEntity<>(membre, HttpStatus.OK);
+    }
     @GetMapping("/listeMembres")
     @PreAuthorize("hasRole('ADMIN')")
     //@PreAuthorize("hasRole('RESPONSABLE')")

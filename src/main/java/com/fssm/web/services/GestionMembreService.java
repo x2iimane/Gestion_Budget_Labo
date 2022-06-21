@@ -4,7 +4,6 @@ import com.fssm.web.entities.Membre;
 import com.fssm.web.enums.Grade;
 import com.fssm.web.enums.Specialite;
 import org.springframework.data.domain.Page;
-import org.springframework.http.ResponseEntity;
 
 import java.time.LocalDate;
 
@@ -14,7 +13,7 @@ public interface GestionMembreService {
 
     public Page<Membre> getAllmembres(int page);
 
-    public ResponseEntity<?> getMembre(Long id);
+    public Membre getMembre(Long id);
 
     public Membre addNewMembre(String nom,
                                String prenom,

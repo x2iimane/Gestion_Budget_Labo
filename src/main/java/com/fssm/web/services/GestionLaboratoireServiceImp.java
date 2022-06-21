@@ -44,8 +44,6 @@ public class GestionLaboratoireServiceImp implements GestionLaboratoireService{
 		return membres;
 	}
 
-
-
 	@Override
 	public Laboratoire getLaboratoire(String idLabo) {
 		return null;

@@ -14,8 +14,6 @@ import com.fssm.web.repositories.MembreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -58,10 +56,11 @@ public class GestionMembreServiceImp implements GestionMembreService {
     }
 
     @Override
-    public ResponseEntity<?> getMembre(Long id) {
+    public Membre getMembre(Long id) {
         Membre membre = membreRepository.findById(id).get();
         System.out.println(membre);
-        return new ResponseEntity<>(membre, HttpStatus.OK);
+        return  membre;
+      //  return new ResponseEntity<>(membre, HttpStatus.OK);
     }
 
     @Override
